@@ -25,7 +25,7 @@ sourceCpp("not_able_knots.cpp")
 
 ##### Best fit for a fixed number of knots  ######
 
-bestfitcovidfix = function(covdata,nknots,delta,degree,
+splineSelection.fitfix = function(covdata,nknots,delta,degree,
                            b.knots=c(min(covdata$index),max(covdata$index)),
                            bspline=TRUE){
   
@@ -99,7 +99,7 @@ bestfitcovidfix = function(covdata,nknots,delta,degree,
 
 #### Best fit for all number of knots (until a limit nlimknot) ####
 
-bestfitcovid = function(covdata,nlimknot,lambda,delta,degree,bspline=TRUE,
+splineSelection.fit = function(covdata,nlimknot,lambda,delta,degree,bspline=TRUE,
                         b.knots=NULL,nome='nome'){
     
     fixknots = matrix(0,nlimknot+1,nlimknot+1)
@@ -122,7 +122,7 @@ bestfitcovid = function(covdata,nlimknot,lambda,delta,degree,bspline=TRUE,
     
     EQMpen = vector()  
     for(i in 1:(nlimknot+1)){
-        a = bestfitcovidfix(covdata,i-1,delta,degree,b.knots,bspline)
+        a = splineSelection.fitfix(covdata,i-1,delta,degree,b.knots,bspline)
         EQMpen[i] = a$min.eqm + lambda*i
         fixknots[i,1:length(a$knots)] = a$knots
     }
@@ -150,30 +150,3 @@ EQM_cal <- function(i, bspline, covdata, allposknots, nknots, degree,
                                 Boundary.knots=b.knots), data = covdata )
     mean(fit$residuals^2)
 }
-
-####   Passar filtro suavizando os dados  ####
-suavizar_dados <- function(covdata, janela=7){
-  
-  n <- nrow(covdata)
-  new_data_cases <- c()
-  new_data_deaths <- c()
-  
-  for(i in 1:(n-janela+1)){
-    mean_cases <- mean(covdata$cases[i:(i+janela-1)], na.rm = T)
-    mean_deaths <- mean(covdata$deaths[i:(i+janela-1)], na.rm = T)
-    new_data_cases <- c(new_data_cases, ifelse(is.nan(mean_cases), 0, mean_cases))
-    new_data_deaths <- c(new_data_deaths, ifelse(is.nan(mean_deaths), 0, mean_deaths))
-  }
-  
-  new_data_cases <- append(new_data_cases, rep(0, janela-1))
-  new_data_deaths <- append(new_data_deaths, rep(0, janela-1))
-  
-  covdata <- covdata %>% mutate(cases_smooth = new_data_cases, deaths_smooth = new_data_deaths)
-  
-  return(covdata)
-}
-
-
-##### FIM FUNÇÕES
-
-
