@@ -9,6 +9,8 @@
 ###### Data: 03/06/2020
 ####################################################################################
 
+## LICENSE: GPL (>= 2)
+
 
 library(lubridate)
 library(dplyr)
@@ -17,9 +19,6 @@ library(splines)
 library(stringr)
 library(parallel)
 library(Rcpp)
-
-
-sourceCpp("not_able_knots.cpp")
 
 ##### INÍCIO FUNÇÕES
 
@@ -48,8 +47,6 @@ splineSelection.fitfix = function(covdata,nknots,delta,degree,
 
       notAble <- not_able_knots(allposknots, delta)
       allposknots = allposknots[, -notAble]
-      ## allposknots = allposknots[,apply(apply(allposknots,FUN=dist,2),
-      ## FUN=min,2)>delta]
 
       if( ncol(allposknots) == 0){
           print("allposknots with 0 columns: decrease nknots or delta, or aumentgs sample size\n")
@@ -62,16 +59,6 @@ splineSelection.fitfix = function(covdata,nknots,delta,degree,
                      allposknots, nknots, degree, b.knots,
                      mc.cores=detectCores())
       EQM = simplify2array(ret)      
-
-      ## for(i in 1:ncol(allposknots)){
-      ##     if ( isTRUE(bspline) ) 
-      ##         fit=lm(cases ~ bs(index,knots=c(allposknots[2:(nknots+1),i]),
-      ##                           degree=degree), data = covdata )
-      ##     else 
-      ##         fit=lm(cases ~ ns(index,knots=c(allposknots[2:(nknots+1),i]),
-      ##                           Boundary.knots=b.knots), data = covdata )
-      ##     EQM[i] = mean(fit$residuals^2)
-      ## }
 
       chosenknots = allposknots[2:(nknots+1),which.min(EQM)]
       

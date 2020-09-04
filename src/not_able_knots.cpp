@@ -1,5 +1,9 @@
+// LICENSE: GPL (>= 2)
+
 #include <Rcpp.h>
 #include <list>
+
+
 
 // [[Rcpp::export]]
 Rcpp::NumericVector
