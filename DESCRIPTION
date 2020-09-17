@@ -1,6 +1,6 @@
 Package: splineSelection
 Type: Package
-Title: Knots selection in spline-based regression models
+Title: Automatic model selection in spline-based regression. 
 Version: 0.1
 Date: 2020-09-03
 Author: Alex Sousa, Magno Tairone, Florencia Leonardi, Rodrigo Carvalho
