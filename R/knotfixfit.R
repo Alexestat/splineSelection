@@ -1,3 +1,17 @@
+#' @title Knots locations selection 
+#' @description Provides the knots locations in spline-based models for a fixed number of knots.
+#' @param x Vector of function arguments. 
+#' @param y Vector of noisy function values.
+#' @param nknots Number of internal knots.
+#' @param delta Minimal distance value between two consecutive knots.
+#' @param degree Degree of the spline basis.
+#' @param b.knots External knots vector. Default is the (min(x),max(x)). 
+#' @param bspline Logical value. If TRUE, B-spline is fitted. Else, natural splines.
+#'
+#' @return
+#' @export
+#'
+#' @examples 
 knotfixfit = function(x,y,nknots,delta,degree,
                                   b.knots=c(min(x),max(x)),
                                   bspline=TRUE){
