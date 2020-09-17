@@ -1,5 +1,14 @@
-#' @title Knots locations selection 
-#' @description Provides the knots locations in spline-based models for a fixed number of knots.
+library(lubridate)
+library(dplyr)
+library(ggplot2)
+library(splines)
+library(stringr)
+library(parallel)
+library(Rcpp)
+
+
+#' @title Optimal knots locations selection 
+#' @description Provides optimal knots locations in spline-based models for a fixed number of knots.
 #' @param x Vector of function arguments. 
 #' @param y Vector of noisy function values.
 #' @param nknots Number of internal knots.
@@ -12,6 +21,7 @@
 #' @export
 #'
 #' @examples 
+
 knotfixfit = function(x,y,nknots,delta,degree,
                                   b.knots=c(min(x),max(x)),
                                   bspline=TRUE){
