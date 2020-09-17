@@ -17,7 +17,7 @@ library(Rcpp)
 #' @param b.knots External knots vector. Default is the (min(x),max(x)). 
 #' @param bspline Logical value. If TRUE, B-spline is fitted. Else, natural splines.
 #'
-#' @return
+#' @return Colocar o que entrega
 #' @export
 #'
 #' @examples 
