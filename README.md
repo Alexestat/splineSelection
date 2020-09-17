@@ -1,2 +1,2 @@
 # splineSelection
-Automatic model selection in spline-based regression.
+Automatic model selection method in spline-based regression.
