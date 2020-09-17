@@ -3,8 +3,8 @@ Type: Package
 Title: Knots selection in spline-based regression models
 Version: 0.1
 Date: 2020-09-03
-Author: Alex Rodrigo, Magno Tairone, Florencia Leonardi, Rodrigo Carvalho
-Maintainer: Alex Rodrigo <alex.sousa89@usp.br>
+Author: Alex Sousa, Magno Tairone, Florencia Leonardi, Rodrigo Carvalho
+Maintainer: Alex Sousa <alex.sousa89@usp.br>
 Description: Provides the number of internal knots and their locations automatically in
 spline-based regression models.
 License: GPL (>= 2)
