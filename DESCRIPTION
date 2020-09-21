@@ -5,8 +5,7 @@ Version: 0.1
 Date: 2020-09-03
 Author: Alex Sousa, Magno Tairone, Florencia Leonardi, Rodrigo Carvalho
 Maintainer: Alex Sousa <alex.sousa89@usp.br>
-Description: Provides the number of internal knots and their locations automatically in
-spline-based regression models.
+Description: Provides the number of internal knots and their locations automatically in spline-based regression models.
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.5)
 LinkingTo: Rcpp
