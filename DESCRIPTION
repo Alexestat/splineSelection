@@ -9,3 +9,5 @@ Description: Provides the number of internal knots and their locations automatic
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.5)
 LinkingTo: Rcpp
+Depends: 
+    R (>= 2.10)
