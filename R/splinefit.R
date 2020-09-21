@@ -9,7 +9,7 @@ library(Rcpp)
 #' @title Automatic spline-based model selection
 #' @description Provides optimal number of internal knots and their locations in spline-based models.
 #' @param x Vector of function arguments.
-#' @param y Vector of noisy function values.
+#' @param y Vector of function values.
 #' @param nlimknot Maximum number of internal knots.
 #' @param lambda Tunning parameter of the penalized least squares estimation process.
 #' @param delta Minimal distance value between two consecutive knots.
@@ -17,7 +17,7 @@ library(Rcpp)
 #' @param bspline External knots vector. Default is the (min(x),max(x)).
 #' @param b.knots Logical value. If TRUE, B-spline is fitted. Else, natural splines.
 #'
-#' @return
+#' @return A list with selected knots and fitted model.
 #' @export
 #'
 #' @examples
