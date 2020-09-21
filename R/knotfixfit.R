@@ -1,3 +1,11 @@
+library(lubridate)
+library(dplyr)
+library(ggplot2)
+library(splines)
+library(stringr)
+library(parallel)
+library(Rcpp)
+
 #' @title Knots locations selection 
 #' @description Provides internal knots locations in spline-based models for a fixed number of knots.
 #' @param x Vector of function arguments. 
