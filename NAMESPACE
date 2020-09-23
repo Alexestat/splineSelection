@@ -1,4 +1,4 @@
 useDynLib(splineSelection, .registration=TRUE)
 importFrom(Rcpp, evalCpp)
-export(splineSelection.fitfix)
-export(splineSelection.fit)
+export(knotfixfit)
+export(splinefit)
