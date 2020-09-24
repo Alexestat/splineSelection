@@ -30,7 +30,6 @@ library(Rcpp)
       first.knot = sort(x)[round(length(x)*0.25)]
       last.knot = max(x)
       b.knots = c(first.knot, last.knot)
-      print(b.knots)
     }
     else {
       first.knot = sort(x)[round(length(x) *
@@ -47,7 +46,7 @@ library(Rcpp)
     EQMpen[i] = a$min.eqm + lambda*i
     fixknots[i,1:length(a$knots)] = a$knots
   }
-  
+    
   min.nknot = which.min(EQMpen)
   if ( min.nknot == 1 ) {bestknots = NULL
   }else {bestknots = fixknots[which.min(EQMpen),1:(min.nknot-1)]}

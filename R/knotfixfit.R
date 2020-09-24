@@ -51,7 +51,7 @@ knotfixfit = function(x,y,nknots,delta,degree,
     
     EQM = NA
     
-    ret = mclapply(1:ncol(allposknots), EQM_cal, bspline,data.frame(x,y),
+    ret = mclapply(1:ncol(allposknots), EQM_cal, bspline, data.frame(x,y),
                    allposknots, nknots, degree, b.knots,
                    mc.cores=detectCores())
     EQM = simplify2array(ret)      
