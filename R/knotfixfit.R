@@ -32,7 +32,7 @@ knotfixfit = function(x,y,nknots,delta,degree,
   posknots <- x[!(x %in% c(min(x), max(x)))] %>% 
     as.integer() %>% sort()
   
-  posknots <- posknots[posknots >= b.knots[1] & posknots <= b.knots[2]]
+  posknots <- posknots[posknots > b.knots[1] & posknots < b.knots[2]]
   
   if( nknots > 0){
     
