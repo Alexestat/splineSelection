@@ -50,10 +50,19 @@ knotfixfit = function(x,y,nknots,delta,degree,
     }
     
     EQM = NA
-    
-    ret = mclapply(1:ncol(allposknots), EQM_cal, bspline, data.frame(x,y),
+
+    if (Sys.info()[['sysname']] == "Windows") {
+      message(paste("You are using Microsoft Windows OS. Hence,",
+                    "the parallelization is disable. If you wish,",
+                    "use an Unix-based OS to enable parallelization\n"))
+      ret = mclapply(1:ncol(allposknots), EQM_cal, bspline, data.frame(x,y),
                    allposknots, nknots, degree, b.knots,
-                   mc.cores=detectCores())
+                   mc.cores=1L)
+    } else
+      ret = mclapply(1:ncol(allposknots), EQM_cal, bspline, data.frame(x,y),
+                     allposknots, nknots, degree, b.knots,
+                     mc.cores=detectCores())
+        
     EQM = simplify2array(ret)      
     
     chosenknots = allposknots[2:(nknots+1),which.min(EQM)]
