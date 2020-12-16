@@ -3,6 +3,7 @@ Type: Package
 Title: Automatic model selection in spline-based regression. 
 Version: 0.1
 Date: 2020-09-03
+BugReports: https://github.com/Alexestat/splineSelection/issues
 Author: Alex Sousa, Magno Tairone, Florencia Leonardi, Rodrigo Carvalho
 Maintainer: Alex Sousa <alex.sousa89@usp.br>
 Description: Provides the number of internal knots and their locations automatically in spline-based regression models.
